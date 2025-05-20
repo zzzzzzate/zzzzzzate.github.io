@@ -1,40 +1,209 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Gui-first-blog | Welcome to Gui Site</title><noscript>Please enable JavaScript to view the site</noscript><link rel="icon" href="/img/pwa/favicon.png"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=3.0.19"><!-- inject head--><link rel="canonical" href="http://example.com/2025/05/20/Gui-first-blog/index.html"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/css/all.min.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="从线性化的Wigner-Moyal方程和泊松方程出发，推导色散关系的步骤如下： 推导过程1. 线性化假设假设Wigner函数和电势具有小振幅平面波扰动：$$W(\mathbf{r},\mathbf{p},t) &amp;#x3D; W_0(\mathbf{p}) + W_1(\mathbf{p}) e^{"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="Welcome to Gui Site"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.png"><link rel="apple-touch-icon" href="/img/pwa/favicon.png" sizes="180x180"><script>console.log(' %c Solitude %c ' + '3.0.19' + ' %c https://github.com/everfu/hexo-theme-solitude',
+    'background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff',
+    'background:#ff9a9a ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff',
+    'background:unset ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff')
+</script><script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
 
-block content
-    main.layout#content-inner
-        #post
-            if page.not_cover
-                include includes/widgets/post/postInfo
-            article.post-content.article-container
-                if page.ai_text && theme.post.ai.enable
-                    include includes/widgets/post/ai
-                != page.content
-            include includes/widgets/post/copyright
-            .post-tools-right
-                .tag_share
-                    .post-meta__tag-list
-                        each data in page.tags.data || []
-                            a(href=url_for(data.path)).post-meta__tags
-                                span.tags-punctuation
-                                    i.solitude.fas.fa-hashtag
-                                    =data.name
-                                    span.tagsPageCount=data.length
-            if theme.google_adsense.enable && !theme.google_adsense.auto_ads && theme.google_adsense.post_content
-                div.google-ads-warp
-                    ins.adsbygoogle(style="display:block; text-align:center; height:284px", data-ad-layout="in-article", data-ad-format="fluid", hide-unfilled="true", data-ad-client=theme.google_adsense.client, data-ad-slot=theme.google_adsense.slot)
-                    script.
-                        (adsbygoogle = window.adsbygoogle || []).push({});
-            if site.posts.length > 1
-                include includes/widgets/post/postNav
-            if theme.related_post.enable
-                != related_posts(page, site.posts)
-            if page.comment
-                - var comment_js = true
-                include includes/widgets/third-party/comments/comment
-        if page.aside
-            include includes/widgets/aside/aside
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+
+                if (name && keyObj[name]) return
+
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+            addEventListenerPjax: (ele, event, fn, option = false) => {
+              ele.addEventListener(event, fn, option)
+              utils.addGlobalFn('pjax', () => {
+                  ele.removeEventListener(event, fn, option)
+              })
+            },
+            diffDateFormat: (selector) => {
+                selector.forEach(item => {
+                    const date = new Date(item.getAttribute('datetime') || item.textContent);
+                    item.textContent = (date.getMonth() + 1).toString()+'/'+date.getDate().toString();
+                });
+            },
+        }
+    })()</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    typeof rm === 'object' && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: undefined,
+    runtime: '2023-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.avif'
+    },
+    copyright: false,
+    highlight: {"limit":200,"expand":true,"copy":true,"syntax":"highlight.js"},
+    randomlink: false,
+    lang: {"theme":{"dark":"Dark","light":"Light"},"copy":{"success":"Copied","error":"Copy failed"},"backtop":"Back to top","time":{"day":" days ago","hour":" hours ago","just":"just","min":" minutes ago","month":" months ago"},"day":" days","f12":"Developer mode is turned on, please follow the GPL.","totalk":"You don't need to delete blank lines, just type in your comments."},
+    aside: {
+        state: {
+            morning: "✨ 早上好，新的一天开始了",
+            noon: "🍲 午餐时间",
+            afternoon: "🌞 下午好",
+            night: "早点休息",
+            goodnight: "晚安 😴",
+        },
+        witty_words: [],
+        witty_comment: {
+            prefix: 'Long time no see, ',
+            back: 'Welcome back again,',
+        },
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    right_menu: false,
+    translate: {"translateDelay":0,"defaultEncoding":2},
+    lure: false,
+    expire: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: false,
+    comment: false,
+    ai_text: false,
+    color: false,
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body id="body"><!-- universe--><!-- background img--><!-- loading--><!-- console--><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Archives</div><div class="length-num">2</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a></div></div></div><span class="sidebar-menu-item-title">Function</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude fas fa-circle-half-stroke"></i><span>Display mode</span></span></div><span class="sidebar-menu-item-title">Tags</span><div class="card-tags"><div class="card-tag-cloud"></div></div></div></div><!-- keyboard--><!-- righhtside--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><a id="site-name" href="/" title="Back to home"><span class="title">Solitude</span><i class="solitude fas fa-home"></i></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">Gui-first-blog</a></div></div><div id="menus"></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude fas fa-arrow-up"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude fas fa-bars"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="/" alt="Gui-first-blog"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="This article is a Original article, pay attention to the copyright.">Original</a><div class="tag_share"><div class="post-meta__tag-list"></div></div></div></div><h1 class="post-title">Gui-first-blog</h1><div id="post-meta"><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content article-container"><p>从线性化的Wigner-Moyal方程和泊松方程出发，推导色散关系的步骤如下：</p>
+<hr>
+<h3 id="推导过程"><a href="#推导过程" class="headerlink" title="推导过程"></a>推导过程</h3><h4 id="1-线性化假设"><a href="#1-线性化假设" class="headerlink" title="1. 线性化假设"></a>1. <strong>线性化假设</strong></h4><p>假设Wigner函数和电势具有小振幅平面波扰动：<br>$$<br>W(\mathbf{r},\mathbf{p},t) &#x3D; W_0(\mathbf{p}) + W_1(\mathbf{p}) e^{i k z - i \omega t},<br>$$<br>$$<br>\phi(\mathbf{r},t) &#x3D; \phi_1 e^{i k z - i \omega t},<br>$$<br>其中 $W_0(\mathbf{p})$ 是均匀背景分布，$W_1(\mathbf{p})$ 和 $\phi_1$ 是扰动项。</p>
+<hr>
+<h4 id="2-代入Wigner-Moyal方程"><a href="#2-代入Wigner-Moyal方程" class="headerlink" title="2. 代入Wigner-Moyal方程"></a>2. <strong>代入Wigner-Moyal方程</strong></h4><p>静电情形下，Wigner-Moyal方程为：<br>$$<br>\partial_t W + \frac{\mathbf{p}}{m} \cdot \nabla_r W &#x3D; \frac{q}{\hbar} \left[ \phi\left(\mathbf{r} + \frac{i\hbar}{2} \nabla_p, t\right) - \phi\left(\mathbf{r} - \frac{i\hbar}{2} \nabla_p, t\right) \right] W.<br>$$<br>线性化后保留一阶扰动项，扰动方程化简为：<br>$$<br>-i \omega W_1 + i k \frac{p_z}{m} W_1 &#x3D; \frac{q}{\hbar} \phi_1 \left[ W_0\left(\mathbf{p} + \frac{\hbar k \mathbf{\hat{z}}}{2}\right) - W_0\left(\mathbf{p} - \frac{\hbar k \mathbf{\hat{z}}}{2}\right) \right].<br>$$<br>解得：<br>$$<br>W_1(\mathbf{p}) &#x3D; \frac{q \phi_1}{\hbar (\omega - k p_z&#x2F;m)} \left[ W_0\left(\mathbf{p} + \frac{\hbar k \mathbf{\hat{z}}}{2}\right) - W_0\left(\mathbf{p} - \frac{\hbar k \mathbf{\hat{z}}}{2}\right) \right].<br>$$</p>
+<hr>
+<h4 id="3-代入泊松方程"><a href="#3-代入泊松方程" class="headerlink" title="3. 代入泊松方程"></a>3. <strong>代入泊松方程</strong></h4><p>电荷密度为：<br>$$<br>n_1 &#x3D; \int d^3 p , W_1(\mathbf{p}) &#x3D; \frac{q \phi_1}{\hbar} \int d^3 p , \frac{W_0\left(\mathbf{p} + \frac{\hbar k \mathbf{\hat{z}}}{2}\right) - W_0\left(\mathbf{p} - \frac{\hbar k \mathbf{\hat{z}}}{2}\right)}{\omega - k p_z&#x2F;m}.<br>$$<br>泊松方程为：<br>$$<br>k^2 \phi_1 &#x3D; \frac{q n_1}{\epsilon_0}.<br>$$<br>联立得色散关系：<br>$$<br>1 + \frac{q^2}{\epsilon_0 \hbar k^2} \int d^3 p , \frac{W_0\left(\mathbf{p} + \frac{\hbar k \mathbf{\hat{z}}}{2}\right) - W_0\left(\mathbf{p} - \frac{\hbar k \mathbf{\hat{z}}}{2}\right)}{\omega - k p_z&#x2F;m} &#x3D; 0. \quad \text{(1)}<br>$$</p>
+<hr>
+<h4 id="4-变量替换简化积分"><a href="#4-变量替换简化积分" class="headerlink" title="4. 变量替换简化积分"></a>4. <strong>变量替换简化积分</strong></h4><p>令 $$\mathbf{p}’ &#x3D; \mathbf{p} \pm \frac{\hbar k \mathbf{\hat{z}}}{2}$$，则分子差分为：<br>$$<br>W_0\left(\mathbf{p} + \frac{\hbar k \mathbf{\hat{z}}}{2}\right) - W_0\left(\mathbf{p} - \frac{\hbar k \mathbf{\hat{z}}}{2}\right) &#x3D; W_0(\mathbf{p}’) \bigg|<em>{\mathbf{p}’ &#x3D; \mathbf{p} + \frac{\hbar k \mathbf{\hat{z}}}{2}} - W_0(\mathbf{p}’) \bigg|</em>{\mathbf{p}’ &#x3D; \mathbf{p} - \frac{\hbar k \mathbf{\hat{z}}}{2}}.<br>$$<br>将积分变量换回 $\mathbf{p}’$，并利用对称性，原色散关系(1)可改写为：<br>$$<br>1 - \frac{q^2}{m \epsilon_0} \int d^3 p , \frac{W_0(\mathbf{p})}{\left( \omega - k p_z&#x2F;m \right)^2 - \hbar^2 k^4 &#x2F; 4 m^2} &#x3D; 0. \quad \text{(2)}<br>$$<br><strong>关键步骤</strong>：<br>• 差商形式对应动量导数的离散化，即 $$\Delta W_0 \approx \hbar k \partial_{p_z} W_0$$<br>• 分母 $\omega - k p_z&#x2F;m$ 在积分中通过变量替换和泰勒展开转换为平方项，引入量子修正 $$\hbar^2 k^4 &#x2F; 4 m^2$$</p>
+<hr>
+<h3 id="最终色散关系"><a href="#最终色散关系" class="headerlink" title="最终色散关系"></a>最终色散关系</h3><p>$$<br>1 - \frac{q^2}{m \epsilon_0} \int d^3 p , \frac{W_0(\mathbf{p})}{\left( \omega - k p_z&#x2F;m \right)^2 - \hbar^2 k^4 &#x2F; 4 m^2} &#x3D; 0.<br>$$</p>
+<hr>
+<h3 id="物理意义"><a href="#物理意义" class="headerlink" title="物理意义"></a>物理意义</h3><p>• **经典极限 ($\hbar \to 0$)**：退化为Vlasov色散关系 $1 - \frac{q^2}{m \epsilon_0} \int \frac{W_0(\mathbf{p})}{(\omega - k p_z&#x2F;m)^2} d^3 p &#x3D; 0$.<br>• <strong>量子修正</strong>：$\hbar^2 k^4 &#x2F; 4 m^2$ 项反映波矢引起的动量空间离散效应，抑制共振（如Landau阻尼）。</p>
+<span id="more"></span></article><div class="post-copyright"><div class="post-copyright__author_group"><div class="post-copyright__author_img"><img class="post-copyright__author_img_front" src="/img/logo.png"></div><div class="post-copyright__author_name">Zhifei Gui</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">This piece of writing is an original article, utilizing the<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans">CC BY-NC-SA 4.0</a>Agreement. For complete reproduction, please acknowledge the source as Courtesy of<a href="/">Welcome to Gui Site</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"></div></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/05/20/hello-world/"><div class="pagination-info"><div class="label">Next</div><div class="next_info">Hello World</div></div></a></div></nav></div></main><footer id="footer"><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2023 - 2025 By&nbsp;<a class="footer-bar-link" href="/"><img class="author-avatar" src="/img/pwa/favicon.png">Zhifei Gui</a></div><div class="beian-group"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://hexo.io/">Framework: Hexo</a><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/everfu/hexo-theme-solitude">Theme: Solitude</a></div></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=3.0.19"></script><script src="/js/main.js?v=3.0.19"></script><script src="/js/third_party/waterfall.min.js?v=3.0.19"></script><script src="https://fastly.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="/js/tw_cn.js?v=3.0.19"></script><script src="https://fastly.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+utils.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+</script><script src="https://fastly.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><div class="js-pjax"></div></div><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ["title","#body-wrap","#site-config","meta[name=\"description\"]",".js-pjax","meta[property^=\"og:\"]","#config-diff",".rs_show",".rs_hide"],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- google adsense--><!-- search--><!-- music--></body></html>
         <script>
-            const posts = ["2025/05/20/hello-world/","2025/05/20/Gui-first-blog/"];
+            const posts = ["2025/05/20/Gui-first-blog/","2025/05/20/hello-world/"];
             function toRandomPost() {
                 const randomPost = posts[Math.floor(Math.random() * posts.length)];
                 pjax.loadUrl(GLOBAL_CONFIG.root + randomPost);
