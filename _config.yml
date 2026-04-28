@@ -26,11 +26,11 @@ author:
   avatar           : "gzf_profile.jpg"
   name             : "Zhifei Gui (桂知非)"
   pronouns         : "he/him"  
-  bio              : "Bachelor in Physics, HUST. Interest: Plasma Physics."
-  location         : "Earth"
-  employer         : "HUST"
+  bio              : "Ph.D. student in Physics at Dartmouth College. Interest: Plasma Physics."
+  location         : "Hanover, NH"
+  employer         : "Dartmouth College"
   uri              : # URL
-  email            : "u202210151@hust.edu.cn" 
+  email            : "zhifei.gui.gr@dartmouth.edu" 
 
   # Academic websites
   academia         : # URL
