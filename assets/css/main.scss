@@ -43,75 +43,71 @@
 ;
 
 /* === Dartmouth Green Theme Override === */
-/* 在所有主题导入之后追加，确保优先级最高 */
 
 a, a:link {
-  color: #00693E;
+  color: #00693E !important;
 }
 
 a:hover {
-  color: #004F2D;
+  color: #004F2D !important;
 }
 
 a:visited {
-  color: #00693E;
+  color: #00693E !important;
 }
 
 /* 顶部导航栏 */
 .greedy-nav a {
-  color: #00693E;
+  color: #00693E !important;
 }
 
 .greedy-nav a:hover {
-  color: #004F2D;
+  color: #004F2D !important;
 }
 
 .greedy-nav .site-title {
-  color: #00693E;
+  color: #00693E !important;
 }
 
-/* 二级标题下划线（Education, Skills 等） */
+/* 二级标题下划线 */
 .page__content h2 {
-  border-bottom: 1px solid #00693E;
+  border-bottom: 1px solid #00693E !important;
   padding-bottom: 0.5em;
 }
 
 /* 侧边栏作者姓名 */
 .author__name {
-  color: #00693E;
+  color: #00693E !important;
 }
 
 /* 侧边栏社交图标 hover */
 .author__urls a:hover {
-  color: #00693E;
+  color: #00693E !important;
 }
 
-/* 按钮（如 Download CV） */
+/* 按钮 */
 .btn--primary {
-  background-color: #00693E;
-  border-color: #00693E;
+  background-color: #00693E !important;
+  border-color: #00693E !important;
 }
 
 .btn--primary:hover {
-  background-color: #004F2D;
-  border-color: #004F2D;
+  background-color: #004F2D !important;
+  border-color: #004F2D !important;
 }
 
 /* 内联代码 */
 code {
-  color: #00693E;
+  color: #00693E !important;
 }
 
-/* 引用块左侧边框 */
+/* 引用块 */
 blockquote {
-  border-left: 4px solid #00693E;
+  border-left: 4px solid #00693E !important;
 }
 
-/* Publications/Talks 列表项标题 */
-.archive__item-title {
-  color: #00693E;
-}
-
+/* 列表项标题 */
+.archive__item-title,
 .archive__item-title a {
-  color: #00693E;
+  color: #00693E !important;
 }
