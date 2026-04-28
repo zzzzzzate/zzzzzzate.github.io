@@ -1,0 +1,72 @@
+/* === Dartmouth Green Theme === */
+
+/* 所有链接 */
+a,
+a:link,
+a:visited {
+  color: #00693E !important;
+}
+
+a:hover {
+  color: #004F2D !important;
+}
+
+/* 顶部导航栏链接 */
+.greedy-nav a,
+.greedy-nav .site-title {
+  color: #00693E !important;
+}
+
+.greedy-nav a:hover {
+  color: #004F2D !important;
+}
+
+/* 页面二级标题加绿色下划线 */
+.page__content h2 {
+  border-bottom: 2px solid #00693E !important;
+  padding-bottom: 0.4em !important;
+}
+
+/* 侧边栏作者姓名 */
+.author__name {
+  color: #00693E !important;
+}
+
+/* 侧边栏社交图标 hover */
+.author__urls a:hover {
+  color: #00693E !important;
+}
+
+/* 按钮（如 Download CV） */
+.btn--primary {
+  background-color: #00693E !important;
+  border-color: #00693E !important;
+  color: #fff !important;
+}
+
+.btn--primary:hover {
+  background-color: #004F2D !important;
+  border-color: #004F2D !important;
+}
+
+/* 内联代码颜色 */
+p code,
+li code {
+  color: #00693E !important;
+}
+
+/* 引用块左边框 */
+blockquote {
+  border-left: 4px solid #00693E !important;
+}
+
+/* Publications/Talks 列表标题 */
+.archive__item-title,
+.archive__item-title a {
+  color: #00693E !important;
+}
+
+/* 页脚链接 */
+.page__footer a {
+  color: #00693E !important;
+}
