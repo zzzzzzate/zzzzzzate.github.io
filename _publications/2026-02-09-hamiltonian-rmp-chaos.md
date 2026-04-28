@@ -7,7 +7,7 @@ excerpt: "Quantify the threshold of RMP-induced magnetic island width based on t
 date: 2026-02-09
 venue: "Physics of Plasmas"
 paperurl: "https://doi.org/10.1063/5.0307633"
-citation: 'Z. Gui, P. Zhu, and D. F. Escande, <i>Phys. Plasmas</i> **33**, 022502 (2026); https://doi.org/10.1063/5.0307633.'
+citation: 'Z. Gui, P. Zhu, and D. F. Escande, Phys. Plasmas <strong>33</strong>, 022502 (2026); https://doi.org/10.1063/5.0307633.'
 ---
 
 ## Abstract
