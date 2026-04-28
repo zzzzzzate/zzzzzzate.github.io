@@ -1,5 +1,5 @@
 ---
-title: "Hamiltonian estimation of island width threshold for stochasticity onset on edge pedestal top in the presence of a resonant magnetic perturbation"
+title: "Hamiltonian estimation of island width threshold for stochasticity onset on edge pedestal top in the presence of a resonant magnetic perturbation (click for details)"
 collection: publications
 category: manuscripts
 permalink: /publication/gui-2026-hamiltonian-rmp-stochasticity
@@ -7,7 +7,7 @@ excerpt: "Quantify the threshold of RMP-induced magnetic island width based on t
 date: 2026-02-09
 venue: "Physics of Plasmas"
 paperurl: "https://doi.org/10.1063/5.0307633"
-citation: 'Zhifei Gui, Ping Zhu, and Dominique Franck Escande (2026). "Hamiltonian estimation of island width threshold for stochasticity onset on edge pedestal top in the presence of a resonant magnetic perturbation." <i>Physics of Plasmas</i>.'
+citation: 'Z. Gui, P. Zhu, and D. F. Escande, <i>Phys. Plasmas</i> **33**, 022502 (2026); https://doi.org/10.1063/5.0307633.'
 ---
 
 ## Abstract
