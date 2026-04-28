@@ -41,3 +41,77 @@
     "vendor/font-awesome/solid",
     "vendor/font-awesome/brands"
 ;
+
+/* === Dartmouth Green Theme Override === */
+/* 在所有主题导入之后追加，确保优先级最高 */
+
+a, a:link {
+  color: #00693E;
+}
+
+a:hover {
+  color: #004F2D;
+}
+
+a:visited {
+  color: #00693E;
+}
+
+/* 顶部导航栏 */
+.greedy-nav a {
+  color: #00693E;
+}
+
+.greedy-nav a:hover {
+  color: #004F2D;
+}
+
+.greedy-nav .site-title {
+  color: #00693E;
+}
+
+/* 二级标题下划线（Education, Skills 等） */
+.page__content h2 {
+  border-bottom: 1px solid #00693E;
+  padding-bottom: 0.5em;
+}
+
+/* 侧边栏作者姓名 */
+.author__name {
+  color: #00693E;
+}
+
+/* 侧边栏社交图标 hover */
+.author__urls a:hover {
+  color: #00693E;
+}
+
+/* 按钮（如 Download CV） */
+.btn--primary {
+  background-color: #00693E;
+  border-color: #00693E;
+}
+
+.btn--primary:hover {
+  background-color: #004F2D;
+  border-color: #004F2D;
+}
+
+/* 内联代码 */
+code {
+  color: #00693E;
+}
+
+/* 引用块左侧边框 */
+blockquote {
+  border-left: 4px solid #00693E;
+}
+
+/* Publications/Talks 列表项标题 */
+.archive__item-title {
+  color: #00693E;
+}
+
+.archive__item-title a {
+  color: #00693E;
+}
