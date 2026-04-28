@@ -13,7 +13,7 @@ For more details, please click the link below to download my CV in PDF format.
 
 Education
 ======
-* Ph.D. in Physics, Dartmouth College, Expected 2031
+* Ph.D. in Physics & Astronomy, Dartmouth College, Expected 2031
 * B.S. in Physics, Huazhong University of Science and Technology (HUST), 2022 - 2026
   * Awarded "Outstanding Graduate of HUST"
 
