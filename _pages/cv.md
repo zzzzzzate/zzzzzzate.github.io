@@ -11,35 +11,34 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* Ph.D. in Physics, Dartmouth College, Expected 2031
+* B.S. in Physics, Huazhong University of Science and Technology (HUST), 2022 - 2026
+  * Awarded "Outstanding Graduate of HUST"
 
-Work experience
+Research Interests
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* Theoretical Plasma Physics
+* Computational Plasma Physics
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+Research Experience
+======
+* September 2023 – February 2026: Undergraduate Research Assistant
+  * International Joint Research Laboratory of Magnetic Confinement Fusion and Plasma Physics, Wuhan, China
+  * Project: The Hamiltonian Principle of Magnetic Field Lines
+  * Advisors: Prof. Ping Zhu (HUST) & Prof. D. F. Escande (Aix-Marseille University)
+  * Duties included:
+    * Led a provincial-level undergraduate innovation project (2024), achieving "Excellent Completion" evaluation by the School of Physics, HUST
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Programming
+  * Fortran (Proficient)
+  * MATLAB (Proficient)
+  * Python (Medium)
+  * C++ (Elementary)
+* Languages
+  * English
+  * Chinese
 
 Publications
 ======
@@ -58,7 +57,18 @@ Teaching
   <ul>{% for post in site.teaching reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
-Service and leadership
+
+Awards
 ======
-* Currently signed in to 43 different slack teams
+* Outstanding Undergraduate Graduate, April 2026
+* Star of Self-Improvement of HUST, March 2025
+* Third Prize in China Undergraduate Mathematical Contest in Modeling (Top 15%), September 2024
+* First Prize in the 15th National College Mathematics Competition (Top 7%), December 2023
+* First Prize in the 12th Provincial College Mathematics Competition, December 2023
+
+Scholarships
+======
+* Scholarship of Outstanding Project in Undergraduate Research Training, November 2025
+* Science and Technology Innovation Scholarship of HUST, September 2025
+* Self-Improvement Scholarship of HUST, September 2023 / September 2025
+* Excellent Voluntary and Public Service Scholarship of HUST, May 2023 / September 2023
