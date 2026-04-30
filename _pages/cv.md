@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 For more details, please click the link to download my CV in PDF format.
-[Download CV (PDF)](http://zzzzzzate.github.io/files/Zhifei_Gui_CV.pdf)
+[Download CV (PDF)](http://zhifeigui.github.io/files/Zhifei_Gui_CV.pdf)
 
 Education
 ======
