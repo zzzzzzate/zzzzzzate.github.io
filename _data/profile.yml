@@ -1,0 +1,52 @@
+primary_name: "Zhifei Gui"
+secondary_name: "桂知非"
+navbar_name: "Zhifei Gui"
+
+positions:
+- name: Ph.D. Student in Physics & Astronomy
+- name: Dartmouth College
+
+email: "zhifei.gui.gr@dartmouth.edu"
+cv_link: /files/Zhifei_Gui_CV.pdf
+# gscholar: 
+github: zhifeigui
+# twitter:
+orcid: "0009-0000-1790-037X"
+
+short_bio_text_justify: false
+short_bio: >-
+  <p>
+    I am an incoming Ph.D. student in Physics at <strong>Dartmouth College</strong>, set to begin in 2026. I recently completed my B.S. in Physics at <strong>Huazhong University of Science and Technology (HUST)</strong>, where I was honored as an <em>Outstanding Graduate</em>.
+  </p>
+  <p>
+    My research lives at the intersection of <strong>theoretical and computational plasma physics</strong>, with a particular fascination for nonlinear phenomena inside turbulent plasmas. I am drawn to questions where mathematical elegance meets physical reality where we can actually compute, visualize, and understand.
+  </p>
+
+portrait_url: /images/gzf_profile.jpg
+
+education:
+- name: Dartmouth College
+  position: >-
+    Department of Physics & Astronomy<br/>
+    Ph.D. Student
+  date: 2026 - Expected 2031
+- name: Huazhong University of Science and Technology (HUST)
+  position: B.S. in Physics
+  date: 2022 - 2026
+
+experience:
+- name: International Joint Research Laboratory of Magnetic Confinement Fusion and Plasma Physics
+  position: Undergraduate Research Assistant
+  date: Sep. 2023 - Feb. 2026
+
+awards:
+- name: Outstanding Undergraduate Graduate
+  date: Apr. 2026
+- name: Star of Self-Improvement of HUST
+  date: Mar. 2025
+- name: Third Prize in China Undergraduate Mathematical Contest in Modeling
+  date: Sep. 2024
+- name: First Prize in the 15th National College Mathematics Competition
+  date: Dec. 2023
+- name: First Prize in the 12th Provincial College Mathematics Competition
+  date: Dec. 2023
